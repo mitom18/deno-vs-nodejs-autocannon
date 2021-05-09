@@ -2,6 +2,12 @@
 
 Example Deno and Node.js server load comparison done with Autocannon.
 
+## System information
+
+ - Machine: `Acer Aspire V15 Nitro, 2.6 GHz two-core Intel Core i7, 8 GB DDR4`
+ - Deno: `1.9.2`
+ - Node: `14.16.0`
+
 ## Deno
 
 Implementation can be found [here](https://github.com/mitom18/example-server-deno).
