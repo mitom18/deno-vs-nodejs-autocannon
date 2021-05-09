@@ -1,0 +1,29 @@
+{
+    "name": "deno-vs-nodejs-autocannon",
+    "version": "1.0.0",
+    "description": "Example Deno and Node.js server load comparison done with Autocannon.",
+    "main": "src/index.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mitom18/deno-vs-nodejs-autocannon.git"
+    },
+    "keywords": [
+        "Deno",
+        "Node.js",
+        "Autocannon",
+        "server"
+    ],
+    "author": "Michal Toman",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mitom18/deno-vs-nodejs-autocannon/issues"
+    },
+    "homepage": "https://github.com/mitom18/deno-vs-nodejs-autocannon#readme",
+    "dependencies": {
+        "autocannon": "^7.2.0"
+    }
+}
