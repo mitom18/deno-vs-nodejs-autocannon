@@ -8,7 +8,7 @@ Example Deno and Node.js server load comparison done with Autocannon.
  - Deno: `1.9.2`
  - Node: `14.16.0`
 
-## Deno
+## Deno - with bcrypt
 
 Implementation can be found [here](https://github.com/mitom18/example-server-deno).
 
@@ -33,6 +33,33 @@ Implementation can be found [here](https://github.com/mitom18/example-server-den
 Req/Bytes counts sampled once per second.
 
 234 requests in 10.13s, 68.8 kB read, 100 users created
+```
+
+## Deno - without bcrypt
+
+Implementation is the same, just with commented bcrypt functionality. This test shows, that working with passwords via Web Worker API is not that fast. Better solution would probably be to use WebAssembly.
+
+```
+10s test
+100 connections
+4 workers
+
+┌─────────┬──────┬────────┬─────────┬─────────┬───────────┬───────────┬─────────┐
+│ Stat    │ 2.5% │ 50%    │ 97.5%   │ 99%     │ Avg       │ Stdev     │ Max     │    
+├─────────┼──────┼────────┼─────────┼─────────┼───────────┼───────────┼─────────┤    
+│ Latency │ 7 ms │ 872 ms │ 1852 ms │ 1924 ms │ 840.22 ms │ 527.55 ms │ 1980 ms │    
+└─────────┴──────┴────────┴─────────┴─────────┴───────────┴───────────┴─────────┘    
+┌───────────┬─────────┬─────────┬─────────┬─────────┬────────┬────────┬─────────┐    
+│ Stat      │ 1%      │ 2.5%    │ 50%     │ 97.5%   │ Avg    │ Stdev  │ Min     │    
+├───────────┼─────────┼─────────┼─────────┼─────────┼────────┼────────┼─────────┤    
+│ Req/Sec   │ 37      │ 37      │ 119     │ 151     │ 113.5  │ 35.09  │ 37      │    
+├───────────┼─────────┼─────────┼─────────┼─────────┼────────┼────────┼─────────┤    
+│ Bytes/Sec │ 3.15 kB │ 3.15 kB │ 39.3 kB │ 1.32 MB │ 260 kB │ 456 kB │ 3.15 kB │    
+└───────────┴─────────┴─────────┴─────────┴─────────┴────────┴────────┴─────────┘    
+
+Req/Bytes counts sampled once per second.
+
+1k requests in 10.11s, 2.6 MB read, 200 users created
 ```
 
 ## Node.js
